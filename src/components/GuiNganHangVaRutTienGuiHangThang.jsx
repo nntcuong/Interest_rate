@@ -24,7 +24,22 @@ const GuiNganHangVaRutTienGuiHangThang = (props) => {
     }
   };
 
+  const clearInputs = () => {
+    setInitialCapital('');
+    setInterestRate('');
+    setTotalCapitalAndInterest('');
+    setInitialCapitalCap('');
+    setNumberOfPeriods(null);
+  };
+  const clearInputs2 = () => {
+    setInitialCapital2('');
+    setInterestRate2('');
+    setTotalCapitalAndInterest2('');
+    setTotalCapitalAndInterestX2('');
+    setNumberOfPeriods2(null);
+  };
 
+  
   const [initialCapital2, setInitialCapital2] = useState('');
   const [interestRate2, setInterestRate2] = useState('');
   const [totalCapitalAndInterest2, setTotalCapitalAndInterest2] = useState('');
@@ -43,7 +58,12 @@ const GuiNganHangVaRutTienGuiHangThang = (props) => {
       setNumberOfPeriods2(null);
     }
   };
-
+  const clearInputs3 = () => {
+    setInitialCapital3('');
+    setInterestRate3('');
+    setTotalCapitalAndInterest3('');
+    setNumberOfPeriods3(null);
+  };
   const [initialCapital3, setInitialCapital3] = useState('');
   const [interestRate3, setInterestRate3] = useState('');
   const [totalCapitalAndInterest3, setTotalCapitalAndInterest3] = useState('');
@@ -55,7 +75,9 @@ const GuiNganHangVaRutTienGuiHangThang = (props) => {
     const totalCapitalAndInterestValue3 = parseInt(totalCapitalAndInterest3);
 
     if (!isNaN(initialCapitalValue3) && !isNaN(interestRateValue3) && !isNaN(totalCapitalAndInterestValue3)) {
-      const n = Math.log(initialCapitalValue3 / (initialCapitalValue3 - interestRateValue3 * totalCapitalAndInterestValue3 / 100), 1 + totalCapitalAndInterestValue3 / 100);
+      const q=initialCapitalValue3/(initialCapitalValue3-interestRateValue3*totalCapitalAndInterestValue3/100);
+      const p=1+totalCapitalAndInterestValue3/100;
+      const n =Math.log(q) / Math.log(p); 
       const roundedN = Math.round(n);
       setNumberOfPeriods3(roundedN);
     } else {
@@ -90,7 +112,7 @@ const GuiNganHangVaRutTienGuiHangThang = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>I. Tính số tiền còn lại</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs}>
               Clear
             </a>
           </div>
@@ -129,7 +151,7 @@ const GuiNganHangVaRutTienGuiHangThang = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>II. Tính tổng</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs2}>
               Clear
             </a>
           </div>
@@ -167,7 +189,7 @@ const GuiNganHangVaRutTienGuiHangThang = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>III. Tính số kỳ hạn</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs3}>
               Clear
             </a>
           </div>

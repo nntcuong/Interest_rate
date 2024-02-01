@@ -59,7 +59,24 @@ const LaiKepLienTuc = (props) => {
       setNumberOfPeriods3(null);
     }
   };
-
+  const clearInputs = () => {
+    setInitialCapital('');
+    setInterestRate('');
+    setTotalCapitalAndInterest('');
+    setNumberOfPeriods(null);
+  };
+  const clearInputs2 = () => {
+    setInitialCapital2('');
+    setInterestRate2('');
+    setTotalCapitalAndInterest2('');
+    setNumberOfPeriods2(null);
+  };
+  const clearInputs3 = () => {
+    setInitialCapital3('');
+    setInterestRate3('');
+    setTotalCapitalAndInterest3('');
+    setNumberOfPeriods3(null);
+  };
   return (
     <div>
 
@@ -87,7 +104,7 @@ const LaiKepLienTuc = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>I. Tính kỳ hạn</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs}>
               Clear
             </a>
           </div>
@@ -98,7 +115,7 @@ const LaiKepLienTuc = (props) => {
               <input type="number" value={initialCapital} onChange={(e) => setInitialCapital(e.target.value)} />
             </div>
             <div className="rowInput">
-              <p>Nhập số tiền gửi vàot</p>
+              <p>Nhập số tiền gửi vào</p>
               <input type="number" value={interestRate} onChange={(e) => setInterestRate(e.target.value)} />
             </div>
             <div className="rowInput">
@@ -122,7 +139,7 @@ const LaiKepLienTuc = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>II. Tính tổng</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs2}>
               Clear
             </a>
           </div>
@@ -156,7 +173,7 @@ const LaiKepLienTuc = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>III. Tính gốc</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs3}>
               Clear
             </a>
           </div>

@@ -17,14 +17,22 @@ const LaiKep = (props) => {
 
     if (!isNaN(initialCapitalValue) && !isNaN(interestRateValue) && !isNaN(totalCapitalAndInterestValue)) {
 
-      const rounded_n = Math.log(totalCapitalAndInterestValue / initialCapitalValue) / Math.log(1 + interestRateValue / 100);
-      setNumberOfPeriods(rounded_n);
+      const q = 1 + totalCapitalAndInterestValue / 100;
+      const p = initialCapitalValue / interestRateValue;
+        const n =Math.log(p) / Math.log(q); 
+       const rounded_n=Math.round(n);
+        setNumberOfPeriods(rounded_n);
 
     } else {
       setNumberOfPeriods(null);
     }
   };
-
+  const clearInputs = () => {
+    setInitialCapital('');
+    setInterestRate('');
+    setTotalCapitalAndInterest('');
+    setNumberOfPeriods(null);
+  };
 
   const [initialCapital2, setInitialCapital2] = useState('');
   const [interestRate2, setInterestRate2] = useState('');
@@ -65,6 +73,18 @@ const LaiKep = (props) => {
       setNumberOfPeriods4(null);
     }
   };
+  const clearInputs2 = () => {
+    setInitialCapital2('');
+    setInterestRate2('');
+    setTotalCapitalAndInterest2('');
+    setNumberOfPeriods2(null);
+  };
+  const clearInputs3 = () => {
+    setInitialCapital4('');
+    setInterestRate4('');
+    setTotalCapitalAndInterest4('');
+    setNumberOfPeriods4(null);
+  };
   return (
     <div>
 
@@ -92,7 +112,7 @@ const LaiKep = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>I. Tính kỳ hạn</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs}>
               Clear
             </a>
           </div>
@@ -127,7 +147,7 @@ const LaiKep = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>II. Tính tổng</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs2}>
               Clear
             </a>
           </div>
@@ -161,7 +181,7 @@ const LaiKep = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>III. Tính gốc</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs3}>
               Clear
             </a>
           </div>

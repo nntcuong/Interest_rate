@@ -31,17 +31,29 @@ const VayVonTraGop = (props) => {
 
   const calculateNumberOfPeriods2 = () => {
     const initialCapitalValue2 = parseFloat(initialCapital2);
-    const interestRateValue2 = parseFloat(interestRate2)/100;
-    const totalCapitalAndInterestValue2 = parseFloat(totalCapitalAndInterest2);
+    const interestRateValue2 = parseFloat(interestRate2);
+    const totalCapitalAndInterestValue2 = parseFloat(totalCapitalAndInterest2)/100;
     const totalCapitalAndInterestValueMonth2 = parseFloat(totalCapitalAndInterestMonth2);
     if (!isNaN(initialCapitalValue2) && !isNaN(totalCapitalAndInterestValueMonth2) &&!isNaN(interestRateValue2) && !isNaN(totalCapitalAndInterestValue2)) {
-      const periods = initialCapitalValue2 * Math.pow((1 + interestRateValue2), totalCapitalAndInterestValueMonth2) - totalCapitalAndInterestValue2* (((Math.pow((1 + interestRateValue2), totalCapitalAndInterestValueMonth2)) - 1) / interestRateValue2);
+      const periods =(interestRateValue2*((1+totalCapitalAndInterestValue2)**initialCapitalValue2))-(totalCapitalAndInterestValueMonth2*((((1+totalCapitalAndInterestValue2)**initialCapitalValue2)-1)/totalCapitalAndInterestValue2))
       setNumberOfPeriods2(periods);
     } else {
       setNumberOfPeriods2(null);
     }
   };
-
+  const clearInputs = () => {
+    setInitialCapital('');
+    setInterestRate('');
+    setTotalCapitalAndInterest('');
+    setNumberOfPeriods(null);
+  };
+  const clearInputs2 = () => {
+    setInitialCapital2('');
+    setInterestRate2('');
+    setTotalCapitalAndInterest2('');
+    setTotalCapitalAndInterestMonth2('');
+    setNumberOfPeriods2(null);
+  };
   return (
     <div>
 
@@ -69,7 +81,7 @@ const VayVonTraGop = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>I. Tính số tiền trả góp/tháng </h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs}>
               Clear
             </a>
           </div>
@@ -104,7 +116,7 @@ const VayVonTraGop = (props) => {
         <div className="recentOrders">
           <div className="cardHeader">
             <h2>II. Tính số tiền phải trả ở kỳ cuối</h2>
-            <a href="#" className="btn">
+            <a href="#" className="btn" onClick={clearInputs2}>
               Clear
             </a>
           </div>
@@ -132,7 +144,7 @@ const VayVonTraGop = (props) => {
           <div className="resultRow">
           <p>Số tiền trả kỳ cuối là : </p>
             {numberOfPeriods2 !== null && (
-              <p className="resultNumber">  {numberOfPeriods2.toFixed(2)}</p>
+              <p className="resultNumber">{numberOfPeriods2.toFixed(2)}</p>
             )}
             </div>
            <button onClick={calculateNumberOfPeriods2}>Tính</button>
